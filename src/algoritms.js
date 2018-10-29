@@ -20,7 +20,8 @@ function when_construct(ListIndices, ListValor, tipo) {
     let indices = ListIndices.split(',');
     if (ListIndices != null && ListValor != null) {
         for(let i=0;i<valores.length;i++){
-            if (tipo===indice_obs) valores[i]= "'"+valores[i]+"'";
+            if (tipo===indice_obs || tipo === indice_obs_upg) 
+                valores[i]= "'"+valores[i]+"'";
             when = when + "WHEN "+indices[i]+" THEN "+valores[i]+" ";
         }
         when = when+"END";
@@ -145,11 +146,6 @@ function getComplet (req, res, next) {
         +where_construct(ListDNI, indice_dnim)+" AND "
         +where_construct(ListCodigo, indice_codigom)+
         " AND clase_pagos.id_clase_pagos IN (select id_clase_pagos from configuracion where estado = 'S') ";
-    
-    //+"("+where_construct(ListDNI,indice_dni)+" OR "+where_construct(ListDNI, indice_dnim)+") AND "
-    //+"("+where_construct(ListCodigo,indice_codigo)+" OR "+where_construct(ListCodigo, indice_codigom)+")"
-    //" AND clase_pagos.id_clase_pagos IN (select id_clase_pagos from configuracion where estado = 'S') ";
-    
     console.log(where)
     q.SelectCollection(req, res, next, where);
 }
@@ -179,12 +175,6 @@ function validate(req, res, next){
         let v4 = when_construct(indices,obs_upg,indice_obs_upg);
         q.UpdateQuery(req,res,next,v , v2, v3, v4,indices);
     }
-}
-
-function updateObservation(req,res,next){
-    let idrecaudation = "'"+req.body.idrecaudacion+"'",
-        recaudation_message = "'"+req.body.mensaje+"'";
-    q.UpdateObservation(req,res,next,idrecaudation,recaudation_message)
 }
 function insertNewCollection(req, res, next){
     let jsonR = req.body;
