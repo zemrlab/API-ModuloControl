@@ -79,23 +79,7 @@ function SelectGeneral(req, res, next, table){
             return next(err);
         })
 }
-function UpdateObservation(req,res,next,id,message){
-    let query = 'UPDATE public.recaudaciones SET'+
-        ' observacion_upg='+message+
-        ' WHERE id_rec='+id+';';
-    console.log(query)
-    db.any(query)
-        .then(()=>{
-            res.status(200)
-                .json({
-                    status : 'success',
-                    message : 'Update success'
-                })
-        })
-        .catch(err=>{
-            return next(err);
-        })
-}
+
 function UpdateQuery(req, res, next, when1, when2, when3,when4, indices) {
     let ind = require('../src/algoritms');
     let query =`UPDATE recaudaciones SET 
@@ -121,7 +105,7 @@ function UpdateQuery(req, res, next, when1, when2, when3,when4, indices) {
 function InsertQuery(req, res, next, valores){
     let query=`insert into recaudaciones
     (id_alum, id_concepto, id_registro, id_ubicacion, cod_alumno, numero, importe, observacion, observacion_upg, fecha, validado, id_tipo)
-        values ${valores}`;  
+        values ${valores}`;
     console.log(query);
     db.any(query)
         .then(function(data){
@@ -133,7 +117,12 @@ function InsertQuery(req, res, next, valores){
                 });
         })
         .catch(function (err) {
-            return next(err);
+
+            res.status(500)
+                .json({
+                    status : 'error',
+                    message : err.message
+                });
         })
 }
 
