@@ -38,6 +38,4 @@ router.get('/tipos', algrmts.getAllTypes);
 /* GET Listar Ubicaciones */
 router.get('/ubicaciones', algrmts.getAllUbications);
 
-router.post('/verificar',algrmts.validateNumber );
-
 module.exports = router;
