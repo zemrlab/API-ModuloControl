@@ -163,7 +163,8 @@ function VerifyNumero(req,res,next, numero){
 module.exports = {
     SelectGeneral:SelectGeneral,
     SelectCollection:SelectCollection,
-    UpdateObservation:UpdateObservation,
     UpdateQuery:UpdateQuery,
-    InsertQuery:InsertQuery
+    InsertQuery:InsertQuery,
+    VerifyNumero:VerifyNumero       
+    
 };
