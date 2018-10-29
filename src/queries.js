@@ -5,7 +5,9 @@ const numeral = require('numeral');
 function SelectCollection(req, res, next, whereIN){
     let where = "WHERE "+whereIN;
     if (whereIN === "") where = "";
-
+	
+    console.log(where);
+	
     let query = 
     "SELECT " +   
     "CASE " +
@@ -46,7 +48,9 @@ function SelectCollection(req, res, next, whereIN){
     "LEFT JOIN tipo ON tipo.id_tipo = recaudaciones.id_tipo "+
         where +
     " ORDER BY alumno.codigo, concepto.concepto, fecha; "
-
+    
+    console.log(query);
+	
     db.any(query)
         .then(function(data){
             // data.forEach(element => {
