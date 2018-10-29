@@ -9,6 +9,7 @@ const indice_flag = 'validado';
 const indice_dni = 'alumno.dni';
 const indice_dnim = 'alumno_programa.dni_m';
 const indice_obs = 'observacion';
+const indice_obs_upg = 'observacion_upg';
 const indice_codigo = 'alumno.codigo';
 const indice_codigom = 'alumno_programa.cod_alumno'
 const indice_ubic = 'id_ubicacion';
@@ -189,7 +190,7 @@ function insertNewCollection(req, res, next){
     let jsonR = req.body;
      let va = "('"+jsonR.id_alum+"',"+
             "'"+jsonR.id_concepto+"', '2103', '"+jsonR.id_ubicacion+"','"+jsonR.id_alum+"',"+
-                "'"+jsonR.numero+"','"+jsonR.importe+"','"+jsonR.observacion+"','"+jsonR.fecha+"',"+
+                "'"+jsonR.numero+"','"+jsonR.importe+"','"+jsonR.observacion+"','"+jsonR.observacion_upg+"','"+jsonR.fecha+"',"+
                 jsonR.validado+",'"+jsonR.tipo+"')";
     q.InsertQuery(req, res, next, va);
 }
@@ -222,7 +223,8 @@ module.exports = {
     i_recaudacion:indice_recaudacion,
     i_flag:indice_flag,
     i_dni:indice_dni,
-    i_obs:indice_obs,
+    i_obs:indice_obs,    
     i_codigo:indice_codigo,
+    i_obs_upg:indice_obs_upg,
     i_ubic:indice_ubic
 };
