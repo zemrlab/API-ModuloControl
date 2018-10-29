@@ -207,6 +207,22 @@ function sumarDias(fecha, dias){
     fecha.setDate(fecha.getDate() + dias);
     return fecha;
 }
+function validateNumber(req , res, next){
+    let jsonR = req.body;
+    let number = jsonR.numero;
+
+    if(number != null){
+        q.VerifyNumero(req,res,next,number);
+    }
+    else{
+        res.status(500)
+                .json({
+                    status : 'failure',
+                    data:'error',
+                    message : 'Error en el numero'
+                });
+    }
+}
 module.exports = {
     getAll: getAll,
     getComplet:getComplet,
