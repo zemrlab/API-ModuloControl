@@ -98,10 +98,10 @@ function UpdateObservation(req,res,next,id,message){
 }
 function UpdateQuery(req, res, next, when1, when2, when3, indices) {
     let ind = require('../src/algoritms');
-    let query ="UPDATE recaudaciones SET ${ind.i_flag} = CASE ${ind.i_recaudacion} 
+    let query ='UPDATE recaudaciones SET ${ind.i_flag} = CASE ${ind.i_recaudacion} 
         ${when1}, ${ind.i_obs} = CASE ${ind.i_recaudacion} ${when2},
         ${ind.i_ubic} = CASE ${ind.i_recaudacion} ${when3}
-         WHERE ${ind.i_recaudacion} IN (${indices})";
+         WHERE ${ind.i_recaudacion} IN (${indices})';
     console.log(query);
     db.any(query)
         .then(function(data){
@@ -119,9 +119,9 @@ function UpdateQuery(req, res, next, when1, when2, when3, indices) {
 }
 
 function InsertQuery(req, res, next, valores){
-    let query="insert into recaudaciones
+    let query='insert into recaudaciones
     (id_alum, id_concepto, id_registro, id_ubicacion, cod_alumno, numero, importe, observacion, observacion_upg, fecha, validado, id_tipo)
-        values ${valores}";  
+        values ${valores}';  
     console.log(query);
     db.any(query)
         .then(function(data){
