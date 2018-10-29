@@ -5,9 +5,7 @@ const numeral = require('numeral');
 function SelectCollection(req, res, next, whereIN){
     let where = "WHERE "+whereIN;
     if (whereIN === "") where = "";
-	
-    console.log(where);
-	
+    
     let query = 
     "SELECT " +   
     "CASE " +
@@ -47,19 +45,15 @@ function SelectCollection(req, res, next, whereIN){
     "LEFT JOIN ubicacion ON ubicacion.id_ubicacion = recaudaciones.id_ubicacion "+
     "LEFT JOIN tipo ON tipo.id_tipo = recaudaciones.id_tipo "+
         where +
-    " ORDER BY alumno.codigo, concepto.concepto, fecha; "
-    
-    console.log(query);
-	
+    " ORDER BY alumno.codigo, concepto.concepto, fecha; "  
+  
     db.any(query)
-        .then(function(data){
-            // data.forEach(element => {
-            //     element.importe = 'S/.'+numeral(element.importe).format('0,0.00');
-            // });
+        .then(function(data){            
             res.status(200)
                 .json({
                     status : 'success',
-                    data:data,
+                    //data:data,
+		    data:query,
                     message : 'Retrieved List'
                 });
         })
