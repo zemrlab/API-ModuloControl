@@ -120,8 +120,8 @@ function UpdateQuery(req, res, next, when1, when2, when3, indices) {
 
 function InsertQuery(req, res, next, valores){
     let query=`insert into recaudaciones
-    (id_alum, id_concepto, id_registro, id_ubicacion, cod_alumno, numero, importe, observacion, fecha, validado, id_tipo)
-        values ${valores}`;
+    (id_alum, id_concepto, id_registro, id_ubicacion, cod_alumno, numero, importe, observacion, observacion_upg, fecha, validado, id_tipo)
+        values ${valores}`;  
     console.log(query);
     db.any(query)
         .then(function(data){
@@ -136,6 +136,29 @@ function InsertQuery(req, res, next, valores){
             return next(err);
         })
 }
+
+function VerifyNumero(req,res,next, numero){
+    
+    let query = "Select count(*) = 0 as verificar from recaudaciones WHERE numero = '" + numero + "'";
+    db.any(query)
+        .then(function(data){
+            res.status(200)
+                .json({
+                    status : 'success',
+                    data:data,
+                    message : 'Retrieved List'
+                });
+        })
+        .catch(function(err){
+            res.status(500)
+                .json({
+                    status : 'error',
+                    message : err.message
+                });
+        })
+        
+}
+
 
 module.exports = {
     SelectGeneral:SelectGeneral,
