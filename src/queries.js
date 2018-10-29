@@ -52,8 +52,7 @@ function SelectCollection(req, res, next, whereIN){
             res.status(200)
                 .json({
                     status : 'success',
-                    //data:data,
-		    data:query,
+                    data:data,		    
                     message : 'Retrieved List'
                 });
         })
