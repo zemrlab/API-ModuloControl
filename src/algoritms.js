@@ -227,7 +227,6 @@ module.exports = {
     getAll: getAll,
     getComplet:getComplet,
     validate: validate,
-    updateObservation:updateObservation,
     insertNewCollection:insertNewCollection,
     getAllConcepts: getAllConcepts,
     getAllTypes:getAllTypes,
@@ -239,8 +238,9 @@ module.exports = {
     i_recaudacion:indice_recaudacion,
     i_flag:indice_flag,
     i_dni:indice_dni,
-    i_obs:indice_obs,    
+    i_obs:indice_obs,
     i_codigo:indice_codigo,
     i_obs_upg:indice_obs_upg,
-    i_ubic:indice_ubic
+    i_ubic:indice_ubic,
+    validateNumber: validateNumber
 };
