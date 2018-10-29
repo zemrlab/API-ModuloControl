@@ -41,7 +41,7 @@ function SelectCollection(req, res, next, whereIN){
     "JOIN clase_pagos ON concepto.id_clase_pagos = clase_pagos.id_clase_pagos " +
     "INNER JOIN alumno_alumno_programa ON alumno_alumno_programa.id_alum = alumno.id_alum " +
     "INNER JOIN alumno_programa ON (alumno_programa.cod_alumno = alumno_alumno_programa.cod_alumno " +
-	"AND alumno_programa.id_programa = alumno_alumno_programa.id_programa)" +	
+	"AND alumno_programa.id_programa = alumno_alumno_programa.id_programa) " +	
     "LEFT JOIN ubicacion ON ubicacion.id_ubicacion = recaudaciones.id_ubicacion "+
     "LEFT JOIN tipo ON tipo.id_tipo = recaudaciones.id_tipo "+
         where +
