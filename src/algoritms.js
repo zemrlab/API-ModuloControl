@@ -159,28 +159,28 @@ function validate(req, res, next){
     let check="";
     let obs="";
     let ubic ="";
-    console.log(jsonR);
-    for (let i in jsonR){        
+    let obs_upg = "";
+    for (let i in jsonR){
         if (jsonR.hasOwnProperty(i)) {
             indices = indices +','+jsonR[i].id_rec;
             check = check+'¬'+jsonR[i].check;
             obs = obs  + '¬'+jsonR[i].obs;
             ubic = ubic + '¬'+jsonR[i].ubic;
+            obs_upg = obs_upg + '¬' + jsonR[i].obsupg;
         }
     }
-    
     indices = indices.slice(1); check = check.slice(1); obs = obs.slice(1); ubic = ubic.slice(1);
-    console.log(indices);
-    console.log(check);
-    console.log(obs);
-    console.log(ubic);
-    if (indices != null && check!=null && obs!=null && ubic!=null) {
+    obs_upg = obs_upg.slice(1);
+
+    if (indices != null && check!=null && obs!=null && ubic!=null && obs_upg != null) {
         let v = when_construct(indices, check);
         let v2 = when_construct(indices, obs, indice_obs);
         let v3 = when_construct(indices, ubic);
-        q.UpdateQuery(req,res,next,v , v2, v3,indices);
+        let v4 = when_construct(indices,obs_upg,indice_obs_upg);
+        q.UpdateQuery(req,res,next,v , v2, v3, v4,indices);
     }
 }
+
 function updateObservation(req,res,next){
     let idrecaudation = "'"+req.body.idrecaudacion+"'",
         recaudation_message = "'"+req.body.mensaje+"'";
