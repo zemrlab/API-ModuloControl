@@ -179,7 +179,7 @@ function validate(req, res, next){
 function insertNewCollection(req, res, next){
     let jsonR = req.body;
      let va = "('"+jsonR.id_alum+"',"+
-            "'"+jsonR.id_concepto+"', '2103', '"+jsonR.id_ubicacion+"','"+jsonR.id_alum+"',"+
+            "'"+jsonR.id_concepto+"', '2103', '"+jsonR.id_ubicacion+"','"+jsonR.codigo+"',"+
                 "'"+jsonR.numero+"','"+jsonR.importe+"','"+jsonR.observacion+"','"+jsonR.observacion_upg+"','"+jsonR.fecha+"',"+
                 jsonR.validado+",'"+jsonR.tipo+"')";
     q.InsertQuery(req, res, next, va);
