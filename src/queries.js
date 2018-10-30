@@ -26,15 +26,10 @@ function SelectCollection(req, res, next, whereIN){
     "CASE " +
         "WHEN alumno_alumno_programa.cod_alumno IS NOT NULL "+
         "THEN alumno_alumno_programa.cod_alumno "+
-        "ELSE alumno.codigo "+
-        // "WHEN (select a.cod_alumno from alumno_alumno_programa a where a.id_alum = alumno.id_alum) != alumno.codigo " +
-        // "THEN (select a.cod_alumno from alumno_alumno_programa a where a.id_alum = alumno.id_alum) " +
-        // "WHEN NOT EXISTS(select a.cod_alumno from alumno_alumno_programa a where a.id_alum = alumno.id_alum) " + 
-        // "THEN alumno.codigo " + 
-        // "WHEN (select a.cod_alumno from alumno_alumno_programa a where a.id_alum = alumno.id_alum) = alumno.codigo " +
-        // "THEN (select a.cod_alumno from alumno_alumno_programa a where a.id_alum = alumno.id_alum) " +
+        "ELSE alumno.codigo "+        
     "END AS codigo, "+
-    "alumno.ape_nom as Nombre " +
+    "alumno.ape_nom as Nombre, " +
+    "recaudaciones.id_alum " + 
     "FROM recaudaciones " +
     "INNER JOIN alumno ON recaudaciones.id_alum = alumno.id_alum " + 
     "JOIN concepto ON recaudaciones.id_concepto = concepto.id_concepto " +
