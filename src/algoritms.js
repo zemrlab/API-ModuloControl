@@ -223,11 +223,13 @@ function validateNumber(req , res, next){
     }
 }
 module.exports = {
-    getAll: getAll,
+    getAll:getAll,
     getComplet:getComplet,
-    validate: validate,
+    validate:validate,
+    updateObservation:updateObservation,
+    getObservation:getObservation,
     insertNewCollection:insertNewCollection,
-    getAllConcepts: getAllConcepts,
+    getAllConcepts:getAllConcepts,
     getAllTypes:getAllTypes,
     getAllUbications:getAllUbications,
     i_name:indice_name,
