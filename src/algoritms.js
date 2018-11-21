@@ -176,6 +176,15 @@ function validate(req, res, next){
         q.UpdateQuery(req,res,next,v , v2, v3, v4,indices);
     }
 }
+function updateObservation(req, res, next) {
+    let idrecaudation = "'" + req.body.idrecaudacion + "'",
+        recaudation_message = "'" + req.body.mensaje + "'";
+    q.UpdateObservation(req, res, next, idrecaudation, recaudation_message)
+}
+function getObservation(req,res,next){
+    let idRecaudacion = req.params.id;
+    q.GetObservation(req,res,next,idRecaudacion);
+}
 function insertNewCollection(req, res, next){
     let jsonR = req.body;
      let va = "('"+jsonR.id_alum+"',"+
