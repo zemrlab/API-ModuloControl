@@ -26,6 +26,13 @@ router.post('/recaudaciones/id', algrmts.validate);
 /*  POST Añadir Recaudacion*/
 router.post('/recaudaciones/new', algrmts.insertNewCollection);
 
+//Cambio de antes patch
+/* PUT Actualizar Observacion*/
+router.put('/recaudaciones/observaciones',algrmts.updateObservation);
+
+// GET Recaudacion
+router.get('/recaudaciones/observaciones/:id',algrmts.getObservation);
+
 /* GET Listar Conceptos */
 router.get('/conceptos', algrmts.getAllConcepts);
 
